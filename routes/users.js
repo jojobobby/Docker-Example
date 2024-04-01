@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
         const users = await getUsers();
         res.json(users);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to get users' });
+        res.status(500).json({ error: 'Failed to get users!' });
     }
 });
 
