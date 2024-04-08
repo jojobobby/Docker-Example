@@ -10,9 +10,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: build
-        run: docker build . -t tidan/app:latest
+        run: |
+          docker build . -t tidan/app:latest
       - name: publish
-        run: docker push tidan/app:latest
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          docker login -u tidan -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push tidan/app:latest
